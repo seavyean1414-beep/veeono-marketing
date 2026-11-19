@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veeono Marketing — Build, Scale &amp; Deploy Creative Workflows</title>
+  <meta name="description" content="Veeono Marketing (www.veeono.site) — The complete platform for Digital Marketing, Graphic Design, Video Editing, and Tech & AI Tools" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 620 140'%3E%3Crect width='620' height='140' rx='24' fill='%23000000'/%3E%3Cpath d='M16 70C54 65 76 16 122 16C163 16 190 41 197 69H186C179 45 155 27 124 27C102 27 91 41 97 55C101 63 109 68 119 70H16Z' fill='%23ffffff'/%3E%3Cpath d='M236 74C198 79 176 128 130 128C89 128 62 103 55 75H66C73 99 97 117 128 117C150 117 161 103 155 89C151 81 143 76 133 74H236Z' fill='%23ffffff'/%3E%3Ctext x='256' y='103' fill='%23ffffff' font-family='Inter,Arial,sans-serif' font-size='88' font-weight='400' letter-spacing='-2'%3Eveeono%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Inter, Kantumruy Pro (Khmer), JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Kantumruy Pro', 'sans-serif'],
+            khmer: ['Kantumruy Pro', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            vercelBlack: '#000000',
+            vercelSurface: '#0A0A0A',
+            vercelBorder: '#242424',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Inter', 'Kantumruy Pro', sans-serif;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.011em;
+    }
+
+    /* Vercel Logo Glow */
+    .dark .veeono-logo-svg {
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.28));
+    }
+    html:not(.dark) .veeono-logo-svg {
+      filter: none;
+    }
+
+    /* Vercel Architectural Grid + Subtle Prism Glow */
+    .dark .vercel-hero-grid {
+      background-image:
+        radial-gradient(ellipse 65% 50% at 50% 0%, rgba(255, 255, 255, 0.08), transparent 70%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+      background-size: 100% 100%, 64px 64px, 64px 64px;
+    }
+
+    html:not(.dark) .vercel-hero-grid {
+      background-image:
+        radial-gradient(ellipse 65% 50% at 50% 0%, rgba(0, 0, 0, 0.04), transparent 70%),
+        linear-gradient(to right, rgba(0, 0, 0, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+      background-size: 100% 100%, 64px 64px, 64px 64px;
+    }
+
+    /* Vercel Prism Bottom Spectrum Bar */
+    .vercel-prism-glow {
+      background: linear-gradient(90deg, #0070F3 0%, #7928CA 35%, #FF0080 68%, #FF4D4D 100%);
+    }
+
+    /* Highlighted Track Card Pulse */
+    @keyframes cardHighlightPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+      40% { box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.65); }
+    }
+    .track-card-highlighted {
+      border-color: #0070F3 !important;
+      animation: cardHighlightPulse 1.6s ease-out 2;
+    }
+
+    /* Khmer Typography Line Height */
+    .kh-text {
+      line-height: 1.75;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .dark ::-webkit-scrollbar-track { background: #000000; }
+    .dark ::-webkit-scrollbar-thumb { background: #262626; border-radius: 9999px; }
+    html:not(.dark) ::-webkit-scrollbar-track { background: #FAFAFA; }
+    html:not(.dark) ::-webkit-scrollbar-thumb { background: #D4D4D4; border-radius: 9999px; }
+  </style>
+</head>
+<body class="bg-white text-neutral-950 dark:bg-black dark:text-white antialiased transition-colors duration-200 selection:bg-blue-600 selection:text-white">
+
+  <!-- ==================== VERCEL-STYLE STICKY GLASSMORPHISM NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 dark:border-neutral-800 dark:bg-black/80 backdrop-blur-md transition-colors">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <!-- Left: Full Veeono Emblem + Wordmark Logo (veeono1_4.png) + Slash Separator -->
+      <div class="flex items-center gap-3">
+        <a href="#top" class="group flex shrink-0 items-center focus:outline-none" aria-label="Veeono Marketing Home">
+          <svg class="h-8 sm:h-9 w-auto veeono-logo-svg text-black dark:text-white transition-opacity duration-200 group-hover:opacity-80" viewBox="0 0 620 140" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="veeono">
+            <path d="M16 70C54 65 76 16 122 16C163 16 190 41 197 69H186C179 45 155 27 124 27C102 27 91 41 97 55C101 63 109 68 119 70H16Z" fill="currentColor"/>
+            <path d="M236 74C198 79 176 128 130 128C89 128 62 103 55 75H66C73 99 97 117 128 117C150 117 161 103 155 89C151 81 143 76 133 74H236Z" fill="currentColor"/>
+            <text x="256" y="103" fill="currentColor" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="88" font-weight="400" letter-spacing="-2">veeono</text>
+          </svg>
+        </a>
+        <span class="hidden sm:inline-block text-neutral-300 dark:text-neutral-700 text-lg font-light select-none">/</span>
+        <span class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-0.5 text-[11px] font-medium text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+          <span>veeono.site</span>
+        </span>
+      </div>
+
+      <!-- Center Navigation (Desktop) -->
+      <nav class="hidden xl:flex items-center gap-1" aria-label="Main Navigation">
+        <a href="#top" data-i18n="nav_home" class="rounded-full px-3 py-1.5 text-sm text-neutral-600 transition hover:text-black dark:text-neutral-400 dark:hover:text-white">
+          Home
+        </a>
+
+        <!-- Categories / Topics 4-Column Mega Menu -->
+        <div class="relative" id="topics-menu-wrapper">
+          <button
+            type="button"
+            id="topics-menu-btn"
+            aria-expanded="false"
+            class="flex items-center gap-1 rounded-full px-3 py-1.5 text-sm text-neutral-600 transition hover:text-black dark:text-neutral-400 dark:hover:text-white focus:outline-none"
+          >
+            <span data-i18n="nav_topics">Topics</span>
+            <i data-lucide="chevron-down" id="topics-chevron" class="h-3.5 w-3.5 text-neutral-400 transition-transform duration-200"></i>
+          </button>
+
+          <!-- Mega Menu Panel -->
+          <div
+            id="topics-mega-menu"
+            class="invisible opacity-0 translate-y-1 pointer-events-none fixed left-1/2 top-16 z-50 w-[94vw] max-w-5xl -translate-x-1/2 pt-2 transition-all duration-200"
+          >
+            <div class="rounded-xl border border-neutral-200 bg-white/95 p-6 shadow-2xl dark:border-neutral-800 dark:bg-[#0A0A0A]/95 backdrop-blur-xl">
+              <div class="grid grid-cols-4 gap-6 divide-x divide-neutral-200 dark:divide-neutral-800">
+                <!-- Col 1: Digital Marketing -->
+                <div class="space-y-3">
+                  <button type="button" onclick="jumpToDirectory('Digital Marketing', 'SEO')" class="group flex items-center gap-2.5 text-left">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white">
+                      <i data-lucide="trending-up" class="h-4 w-4"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-neutral-950 dark:text-white group-hover:text-blue-500">Digital Marketing</p>
+                      <p class="text-[11px] text-neutral-500">Growth &amp; ROAS</p>
+                    </div>
+                  </button>
+                  <ul class="space-y-1 pt-1">
+                    <li><button type="button" onclick="jumpToDirectory('Digital Marketing', 'SEO')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• SEO</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Digital Marketing', 'Meta & TikTok Ads')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Meta &amp; TikTok Ads</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Digital Marketing', 'Content Strategy')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Content Strategy</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Digital Marketing', 'Analytics')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Analytics</button></li>
+                  </ul>
+                </div>
+
+                <!-- Col 2: Graphic Design -->
+                <div class="pl-6 space-y-3">
+                  <button type="button" onclick="jumpToDirectory('Graphic Design', 'Branding & Logo')" class="group flex items-center gap-2.5 text-left">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white">
+                      <i data-lucide="pen-tool" class="h-4 w-4"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-neutral-950 dark:text-white group-hover:text-blue-500">Graphic Design</p>
+                      <p class="text-[11px] text-neutral-500">Identity &amp; UI Systems</p>
+                    </div>
+                  </button>
+                  <ul class="space-y-1 pt-1">
+                    <li><button type="button" onclick="jumpToDirectory('Graphic Design', 'Branding & Logo')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Branding &amp; Logo</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Graphic Design', 'Typography')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Typography</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Graphic Design', 'UI/UX')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• UI/UX</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Graphic Design', 'Print & Poster')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Print &amp; Poster</button></li>
+                  </ul>
+                </div>
+
+                <!-- Col 3: Video Editing -->
+                <div class="pl-6 space-y-3">
+                  <button type="button" onclick="jumpToDirectory('Video Editing', 'Color Grading')" class="group flex items-center gap-2.5 text-left">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white">
+                      <i data-lucide="film" class="h-4 w-4"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-neutral-950 dark:text-white group-hover:text-blue-500">Video Editing</p>
+                      <p class="text-[11px] text-neutral-500">Color, Audio &amp; Motion</p>
+                    </div>
+                  </button>
+                  <ul class="space-y-1 pt-1">
+                    <li><button type="button" onclick="jumpToDirectory('Video Editing', 'Color Grading')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Color Grading</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Video Editing', 'Sound Design')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Sound Design</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Video Editing', 'Motion Graphics')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Motion Graphics</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Video Editing', 'Storytelling')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Storytelling</button></li>
+                  </ul>
+                </div>
+
+                <!-- Col 4: Tech & AI Tools -->
+                <div class="pl-6 space-y-3">
+                  <button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'AI Image/Video')" class="group flex items-center gap-2.5 text-left">
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-white">
+                      <i data-lucide="sparkles" class="h-4 w-4"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-neutral-950 dark:text-white group-hover:text-blue-500">Tech &amp; AI Tools</p>
+                      <p class="text-[11px] text-neutral-500">AI Models &amp; Automation</p>
+                    </div>
+                  </button>
+                  <ul class="space-y-1 pt-1">
+                    <li><button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'AI Image/Video')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• AI Image/Video</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'Productivity')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Productivity</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'Coding & Web')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Coding &amp; Web</button></li>
+                    <li><button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'Prompts')" class="w-full rounded-md px-2.5 py-1.5 text-left text-xs text-neutral-600 transition hover:bg-neutral-100 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white">• Prompts</button></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Mega Menu Footer -->
+              <div class="mt-5 flex items-center justify-between border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800">
+                <div class="flex items-center gap-2 text-neutral-500">
+                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                  <span>Architectural directory across 4 core pillars &amp; 16 specialized playbooks</span>
+                </div>
+                <a href="#directory" onclick="closeAllMenus()" class="inline-flex items-center gap-1 font-medium text-neutral-900 dark:text-white hover:underline">
+                  <span>View All 16 Tracks</span>
+                  <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resources / Assets Dropdown -->
+        <div class="relative" id="resources-menu-wrapper">
+          <button
+            type="button"
+            id="resources-menu-btn"
+            aria-expanded="false"
+            class="flex items-center gap-1 rounded-full px-3 py-1.5 text-sm text-neutral-600 transition hover:text-black dark:text-neutral-400 dark:hover:text-white focus:outline-none"
+          >
+            <span data-i18n="nav_resources">Assets</span>
+            <i data-lucide="chevron-down" id="resources-chevron" class="h-3.5 w-3.5 text-neutral-400 transition-transform duration-200"></i>
+          </button>
+
+          <div
+            id="resources-dropdown"
+            class="invisible opacity-0 translate-y-1 pointer-events-none absolute left-0 top-full z-50 w-80 pt-2 transition-all duration-200"
+          >
+            <div class="rounded-xl border border-neutral-200 bg-white/95 p-2 shadow-2xl dark:border-neutral-800 dark:bg-[#0A0A0A]/95 backdrop-blur-xl space-y-1">
+              <button type="button" onclick="jumpToAssets('Templates & Mockups')" class="flex w-full items-start gap-3 rounded-lg p-2.5 text-left transition hover:bg-neutral-100 dark:hover:bg-neutral-900">
+                <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950 dark:text-white">
+                  <i data-lucide="layout-template" class="h-4 w-4"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-neutral-950 dark:text-white">Templates &amp; Mockups</p>
+                  <p class="text-[11px] text-neutral-500">Figma UI kits, ad layouts &amp; brand mockups</p>
+                </div>
+              </button>
+
+              <button type="button" onclick="jumpToAssets('LUTs & Presets')" class="flex w-full items-start gap-3 rounded-lg p-2.5 text-left transition hover:bg-neutral-100 dark:hover:bg-neutral-900">
+                <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950 dark:text-white">
+                  <i data-lucide="sliders" class="h-4 w-4"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-neutral-950 dark:text-white">LUTs &amp; Presets</p>
+                  <p class="text-[11px] text-neutral-500">Color grading .CUBE packs &amp; SFX libraries</p>
+                </div>
+              </button>
+
+              <button type="button" onclick="jumpToAssets('AI Prompt Library')" class="flex w-full items-start gap-3 rounded-lg p-2.5 text-left transition hover:bg-neutral-100 dark:hover:bg-neutral-900">
+                <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950 dark:text-white">
+                  <i data-lucide="terminal" class="h-4 w-4"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-neutral-950 dark:text-white">AI Prompt Library</p>
+                  <p class="text-[11px] text-neutral-500">System prompts for marketing, art &amp; dev</p>
+                </div>
+              </button>
+
+              <button type="button" onclick="jumpToAssets('Checklists')" class="flex w-full items-start gap-3 rounded-lg p-2.5 text-left transition hover:bg-neutral-100 dark:hover:bg-neutral-900">
+                <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-neutral-200 bg-neutral-50 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-950 dark:text-white">
+                  <i data-lucide="check-square" class="h-4 w-4"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-neutral-950 dark:text-white">Checklists</p>
+                  <p class="text-[11px] text-neutral-500">SEO audits, ad launch &amp; render SOPs</p>
+                </div>
+              </button>
+
+              <div class="border-t border-neutral-200 pt-1.5 dark:border-neutral-800">
+                <a href="#assets" onclick="closeAllMenus()" class="flex items-center justify-between rounded-md px-2.5 py-1.5 text-[11px] font-semibold text-neutral-900 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-900">
+                  <span>View All Creative Assets</span>
+                  <i data-lucide="arrow-right" class="h-3 w-3"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#insights" data-i18n="nav_blog" class="rounded-full px-3 py-1.5 text-sm text-neutral-600 transition hover:text-black dark:text-neutral-400 dark:hover:text-white">
+          Blog
+        </a>
+
+        <a href="#contact" data-i18n="nav_contact" class="rounded-full px-3 py-1.5 text-sm text-neutral-600 transition hover:text-black dark:text-neutral-400 dark:hover:text-white">
+          Contact
+        </a>
+      </nav>
+
+      <!-- Right Utility Bar: ⌘K Search, EN / ខ្មែរ Switcher, Theme Toggle & Pill Primary CTA -->
+      <div class="flex items-center gap-2">
+        <!-- ⌘K Search Trigger -->
+        <button
+          type="button"
+          onclick="openCommandModal()"
+          class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs text-neutral-500 transition hover:border-neutral-400 hover:text-black dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400 dark:hover:border-neutral-600 dark:hover:text-white"
+          aria-label="Search Topics & Assets"
+        >
+          <i data-lucide="search" class="h-3.5 w-3.5"></i>
+          <span data-i18n="search_bar_label" class="hidden md:inline">Search...</span>
+          <kbd class="hidden sm:inline-block rounded border border-neutral-200 bg-white px-1.5 py-0.5 font-mono text-[10px] text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400">⌘K</kbd>
+        </button>
+
+        <!-- Language Switcher (EN / ខ្មែរ) -->
+        <button
+          type="button"
+          onclick="toggleLanguage()"
+          class="rounded-lg border border-neutral-200 bg-neutral-50 px-2.5 py-1.5 text-xs font-medium text-neutral-700 transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300 dark:hover:border-neutral-600"
+          title="Switch Language (English / Khmer)"
+        >
+          <span id="lang-label">EN / ខ្មែរ</span>
+        </button>
+
+        <!-- Light / Dark Theme Toggle -->
+        <button
+          type="button"
+          onclick="toggleTheme()"
+          class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300 dark:hover:border-neutral-600"
+          aria-label="Toggle Light or Dark Theme"
+        >
+          <i data-lucide="sun" class="hidden h-3.5 w-3.5 dark:block text-white"></i>
+          <i data-lucide="moon" class="block h-3.5 w-3.5 dark:hidden text-neutral-800"></i>
+        </button>
+
+        <!-- Vercel High-Contrast Pill Primary CTA -->
+        <button
+          type="button"
+          onclick="openInquiryModal()"
+          data-i18n="cta_get_started"
+          class="hidden sm:inline-flex items-center justify-center rounded-full bg-black px-3.5 py-1.5 text-xs font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+        >
+          Start
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button
+          type="button"
+          onclick="toggleMobileDrawer()"
+          class="flex xl:hidden h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300"
+          aria-label="Open Mobile Menu"
+        >
+          <i data-lucide="menu" class="h-4 w-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Accordion Drawer -->
+    <div id="mobile-drawer" class="hidden xl:hidden border-t border-neutral-200 bg-white px-4 py-4 dark:border-neutral-800 dark:bg-black">
+      <div class="space-y-2">
+        <a href="#top" onclick="toggleMobileDrawer()" data-i18n="nav_home" class="block rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-900">Home</a>
+
+        <!-- Accordion 1: Categories / Topics -->
+        <div class="rounded-lg border border-neutral-200 bg-neutral-50/70 dark:border-neutral-800 dark:bg-[#0A0A0A]">
+          <button
+            type="button"
+            onclick="toggleAccordion('mob-topics-body', 'mob-topics-chev')"
+            class="flex w-full items-center justify-between px-3.5 py-2.5 text-left text-sm font-medium text-neutral-950 dark:text-white"
+          >
+            <span data-i18n="nav_topics">Topics</span>
+            <i data-lucide="chevron-down" id="mob-topics-chev" class="h-4 w-4 text-neutral-400 transition-transform"></i>
+          </button>
+          <div id="mob-topics-body" class="hidden border-t border-neutral-200 px-3.5 py-3 space-y-3 text-xs dark:border-neutral-800">
+            <div>
+              <p class="font-semibold text-neutral-950 dark:text-white mb-1">Digital Marketing</p>
+              <div class="grid grid-cols-2 gap-1 text-neutral-600 dark:text-neutral-400">
+                <button type="button" onclick="jumpToDirectory('Digital Marketing', 'SEO'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• SEO</button>
+                <button type="button" onclick="jumpToDirectory('Digital Marketing', 'Meta & TikTok Ads'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Meta &amp; TikTok Ads</button>
+                <button type="button" onclick="jumpToDirectory('Digital Marketing', 'Content Strategy'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Content Strategy</button>
+                <button type="button" onclick="jumpToDirectory('Digital Marketing', 'Analytics'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Analytics</button>
+              </div>
+            </div>
+            <div>
+              <p class="font-semibold text-neutral-950 dark:text-white mb-1">Graphic Design</p>
+              <div class="grid grid-cols-2 gap-1 text-neutral-600 dark:text-neutral-400">
+                <button type="button" onclick="jumpToDirectory('Graphic Design', 'Branding & Logo'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Branding &amp; Logo</button>
+                <button type="button" onclick="jumpToDirectory('Graphic Design', 'Typography'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Typography</button>
+                <button type="button" onclick="jumpToDirectory('Graphic Design', 'UI/UX'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• UI/UX</button>
+                <button type="button" onclick="jumpToDirectory('Graphic Design', 'Print & Poster'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Print &amp; Poster</button>
+              </div>
+            </div>
+            <div>
+              <p class="font-semibold text-neutral-950 dark:text-white mb-1">Video Editing</p>
+              <div class="grid grid-cols-2 gap-1 text-neutral-600 dark:text-neutral-400">
+                <button type="button" onclick="jumpToDirectory('Video Editing', 'Color Grading'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Color Grading</button>
+                <button type="button" onclick="jumpToDirectory('Video Editing', 'Sound Design'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Sound Design</button>
+                <button type="button" onclick="jumpToDirectory('Video Editing', 'Motion Graphics'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Motion Graphics</button>
+                <button type="button" onclick="jumpToDirectory('Video Editing', 'Storytelling'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Storytelling</button>
+              </div>
+            </div>
+            <div>
+              <p class="font-semibold text-neutral-950 dark:text-white mb-1">Tech &amp; AI Tools</p>
+              <div class="grid grid-cols-2 gap-1 text-neutral-600 dark:text-neutral-400">
+                <button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'AI Image/Video'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• AI Image/Video</button>
+                <button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'Productivity'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Productivity</button>
+                <button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'Coding & Web'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Coding &amp; Web</button>
+                <button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'Prompts'); toggleMobileDrawer();" class="py-1 text-left hover:text-blue-500">• Prompts</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion 2: Resources / Assets -->
+        <div class="rounded-lg border border-neutral-200 bg-neutral-50/70 dark:border-neutral-800 dark:bg-[#0A0A0A]">
+          <button
+            type="button"
+            onclick="toggleAccordion('mob-res-body', 'mob-res-chev')"
+            class="flex w-full items-center justify-between px-3.5 py-2.5 text-left text-sm font-medium text-neutral-950 dark:text-white"
+          >
+            <span data-i18n="nav_resources">Assets</span>
+            <i data-lucide="chevron-down" id="mob-res-chev" class="h-4 w-4 text-neutral-400 transition-transform"></i>
+          </button>
+          <div id="mob-res-body" class="hidden border-t border-neutral-200 px-3.5 py-2.5 space-y-1.5 text-xs dark:border-neutral-800">
+            <button type="button" onclick="jumpToAssets('Templates & Mockups'); toggleMobileDrawer();" class="block py-1 text-left hover:text-blue-500">• Templates &amp; Mockups</button>
+            <button type="button" onclick="jumpToAssets('LUTs & Presets'); toggleMobileDrawer();" class="block py-1 text-left hover:text-blue-500">• LUTs &amp; Presets</button>
+            <button type="button" onclick="jumpToAssets('AI Prompt Library'); toggleMobileDrawer();" class="block py-1 text-left hover:text-blue-500">• AI Prompt Library</button>
+            <button type="button" onclick="jumpToAssets('Checklists'); toggleMobileDrawer();" class="block py-1 text-left hover:text-blue-500">• Checklists</button>
+          </div>
+        </div>
+
+        <a href="#insights" onclick="toggleMobileDrawer()" data-i18n="nav_blog" class="block rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-900">Blog</a>
+        <a href="#contact" onclick="toggleMobileDrawer()" data-i18n="nav_contact" class="block rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-900">Contact</a>
+
+        <button
+          type="button"
+          onclick="toggleMobileDrawer(); openInquiryModal();"
+          data-i18n="cta_get_started"
+          class="mt-2 w-full rounded-full bg-black py-2.5 text-center text-sm font-semibold text-white dark:bg-white dark:text-black"
+        >
+          Start
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ==================== 1. VERCEL.COM ARCHITECTURAL HERO SECTION ==================== -->
+    <section class="relative border-b border-neutral-200 dark:border-neutral-800 vercel-hero-grid">
+      <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
+
+        <!-- Outer Framed Architectural Grid Box (Signature Vercel Crosshairs) -->
+        <div class="relative border border-neutral-200 bg-white/85 dark:border-neutral-800 dark:bg-black/80 backdrop-blur-sm">
+          <!-- 4 Corner Crosshair '+' Markers -->
+          <span class="pointer-events-none absolute -left-2 -top-2 font-mono text-sm text-neutral-400 dark:text-neutral-600 select-none">+</span>
+          <span class="pointer-events-none absolute -right-2 -top-2 font-mono text-sm text-neutral-400 dark:text-neutral-600 select-none">+</span>
+          <span class="pointer-events-none absolute -left-2 -bottom-2 font-mono text-sm text-neutral-400 dark:text-neutral-600 select-none">+</span>
+          <span class="pointer-events-none absolute -right-2 -bottom-2 font-mono text-sm text-neutral-400 dark:text-neutral-600 select-none">+</span>
+
+          <!-- Top Hero Centerpiece -->
+          <div class="px-6 py-12 text-center sm:px-12 sm:py-16">
+            <div class="mx-auto inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-neutral-50 px-3.5 py-1 text-xs font-medium text-neutral-700 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300">
+              <span class="h-2 w-2 rounded-full bg-blue-500"></span>
+              <span data-i18n="hero_badge">Veeono Platform — Ship Campaigns, Brand Systems &amp; AI Workflows</span>
+            </div>
+
+            <h1 data-i18n="hero_title" class="mx-auto mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-black dark:text-white sm:text-6xl lg:text-[64px] lg:leading-[1.06]">
+              Your complete platform for Marketing, Design, Video &amp; AI
+            </h1>
+
+            <p data-i18n="hero_subtitle" class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-lg">
+              Veeono provides the playbooks, templates, LUTs, and AI prompt infrastructure to build, scale, and deploy high-converting digital brands
+            </p>
+
+            <!-- Vercel Dual Pill CTA Row -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+              <a
+                href="#directory"
+                class="inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+              >
+                <svg class="h-3.5 w-auto fill-current" viewBox="0 0 180 100"><path d="M8 49C38 45 54 9 86 9C116 9 136 27 141 47H133C128 30 110 17 88 17C72 17 64 27 68 38C71 44 77 48 84 49H8Z"/><path d="M172 51C142 55 126 91 94 91C64 91 44 73 39 53H47C52 70 70 83 92 83C108 83 116 73 112 62C109 56 103 52 96 51H172Z"/></svg>
+                <span data-i18n="hero_cta_primary">Start Exploring Tracks</span>
+              </a>
+
+              <a
+                href="https://t.me/+ft6iEkOYPGQ1MWZl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition hover:border-neutral-400 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-white dark:hover:border-neutral-600"
+              >
+                <span data-i18n="hero_cta_secondary">Join Telegram Community</span>
+                <i data-lucide="arrow-up-right" class="h-4 w-4 text-neutral-400"></i>
+              </a>
+            </div>
+
+            <!-- Vercel-Style CLI / Prompt Command Bar -->
+            <div class="mx-auto mt-8 max-w-md">
+              <button
+                type="button"
+                onclick="copyCommandText()"
+                class="group flex w-full items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-2.5 font-mono text-xs text-neutral-700 transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-300 dark:hover:border-neutral-600"
+                title="Click to copy command"
+              >
+                <span class="flex items-center gap-2">
+                  <span class="text-neutral-400 select-none">▲ ~</span>
+                  <span id="cli-command-text">npx veeono@latest init --all-tracks</span>
+                </span>
+                <span class="inline-flex items-center gap-1 text-[11px] text-neutral-400 group-hover:text-black dark:group-hover:text-white">
+                  <i data-lucide="copy" class="h-3.5 w-3.5"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive 4-Pillar Deployment / Playbook Preview Bar (Bottom Half of Vercel Frame) -->
+          <div class="border-t border-neutral-200 dark:border-neutral-800">
+            <!-- Pillar Tabs -->
+            <div class="grid grid-cols-2 border-b border-neutral-200 sm:grid-cols-4 dark:border-neutral-800">
+              <button
+                type="button"
+                onclick="setVercelPreviewPillar('Digital Marketing')"
+                data-vercel-tab="Digital Marketing"
+                class="vercel-pillar-tab flex items-center justify-center gap-2 border-r border-b sm:border-b-0 border-neutral-200 bg-neutral-100/80 px-4 py-3.5 text-xs font-semibold text-black dark:border-neutral-800 dark:bg-neutral-900/90 dark:text-white transition"
+              >
+                <i data-lucide="trending-up" class="h-3.5 w-3.5 text-blue-500"></i>
+                <span>Digital Marketing</span>
+              </button>
+              <button
+                type="button"
+                onclick="setVercelPreviewPillar('Graphic Design')"
+                data-vercel-tab="Graphic Design"
+                class="vercel-pillar-tab flex items-center justify-center gap-2 border-b sm:border-b-0 sm:border-r border-neutral-200 px-4 py-3.5 text-xs font-medium text-neutral-500 hover:text-black dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white transition"
+              >
+                <i data-lucide="pen-tool" class="h-3.5 w-3.5"></i>
+                <span>Graphic Design</span>
+              </button>
+              <button
+                type="button"
+                onclick="setVercelPreviewPillar('Video Editing')"
+                data-vercel-tab="Video Editing"
+                class="vercel-pillar-tab flex items-center justify-center gap-2 border-r border-neutral-200 px-4 py-3.5 text-xs font-medium text-neutral-500 hover:text-black dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white transition"
+              >
+                <i data-lucide="film" class="h-3.5 w-3.5"></i>
+                <span>Video Editing</span>
+              </button>
+              <button
+                type="button"
+                onclick="setVercelPreviewPillar('Tech & AI Tools')"
+                data-vercel-tab="Tech & AI Tools"
+                class="vercel-pillar-tab flex items-center justify-center gap-2 px-4 py-3.5 text-xs font-medium text-neutral-500 hover:text-black dark:text-neutral-400 dark:hover:text-white transition"
+              >
+                <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
+                <span>Tech &amp; AI Tools</span>
+              </button>
+            </div>
+
+            <!-- Live Deployment / Playbook Inspector Row -->
+            <div class="grid grid-cols-1 divide-y divide-neutral-200 lg:grid-cols-12 lg:divide-x lg:divide-y-0 dark:divide-neutral-800">
+              <!-- Left Terminal Output -->
+              <div class="lg:col-span-7 p-6 sm:p-8 font-mono text-xs space-y-2.5 bg-neutral-50/60 dark:bg-[#050505]">
+                <div class="flex items-center justify-between border-b border-neutral-200 pb-2.5 dark:border-neutral-800">
+                  <div class="flex items-center gap-1.5">
+                    <span class="h-2.5 w-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700"></span>
+                    <span class="h-2.5 w-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700"></span>
+                    <span id="vercel-term-route" class="ml-2 text-[11px] text-neutral-500">veeono.site/topics/digital-marketing</span>
+                  </div>
+                  <span class="rounded bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">READY</span>
+                </div>
+                <div id="vercel-term-logs" class="space-y-1.5 pt-1 text-neutral-700 dark:text-neutral-300">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+
+              <!-- Right Quick Sub-Track Launcher -->
+              <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                  <p class="font-mono text-[11px] uppercase tracking-wider text-neutral-500">Included Sub-Tracks (4)</p>
+                  <div id="vercel-preview-subtracks" class="mt-3 grid grid-cols-2 gap-2">
+                    <!-- Populated by JS -->
+                  </div>
+                </div>
+                <div class="mt-6 flex items-center justify-between border-t border-neutral-200 pt-4 dark:border-neutral-800">
+                  <span id="vercel-preview-summary" class="text-xs text-neutral-500">4 production playbooks ready</span>
+                  <button
+                    type="button"
+                    onclick="jumpToDirectory(activeVercelPillar, null)"
+                    class="inline-flex items-center gap-1.5 text-xs font-semibold text-black dark:text-white hover:underline"
+                  >
+                    <span>Explore Pillar</span>
+                    <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signature Vercel Prism Spectrum Line at Bottom Edge -->
+          <div class="h-[2px] w-full vercel-prism-glow opacity-80"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. 4-COLUMN ARCHITECTURAL METRICS STRIP ==================== -->
+    <section class="border-b border-neutral-200 bg-white dark:border-neutral-800 dark:bg-black">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 divide-y divide-neutral-200 sm:grid-cols-4 sm:divide-x sm:divide-y-0 dark:divide-neutral-800">
+          <div class="py-7 sm:px-6 first:sm:pl-0">
+            <p class="font-mono text-2xl font-bold tracking-tight text-black dark:text-white sm:text-3xl">4</p>
+            <p data-i18n="stat_1" class="mt-1 text-xs font-medium text-neutral-500">Core Pillars</p>
+          </div>
+          <div class="py-7 pl-4 sm:px-6">
+            <p class="font-mono text-2xl font-bold tracking-tight text-black dark:text-white sm:text-3xl">16+</p>
+            <p data-i18n="stat_2" class="mt-1 text-xs font-medium text-neutral-500">Specialized Tracks</p>
+          </div>
+          <div class="py-7 sm:px-6">
+            <p class="font-mono text-2xl font-bold tracking-tight text-black dark:text-white sm:text-3xl">100+</p>
+            <p data-i18n="stat_3" class="mt-1 text-xs font-medium text-neutral-500">Free Templates &amp; Prompts</p>
+          </div>
+          <div class="py-7 pl-4 sm:px-6 last:sm:pr-0">
+            <p class="font-mono text-2xl font-bold tracking-tight text-black dark:text-white sm:text-3xl">24/7</p>
+            <p data-i18n="stat_4" class="mt-1 text-xs font-medium text-neutral-500">Community Support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. CATEGORIES & 16 SPECIALIZED TRACKS DIRECTORY ==================== -->
+    <section id="directory" class="border-b border-neutral-200 py-16 sm:py-24 dark:border-neutral-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+          <div>
+            <div class="inline-flex items-center gap-1.5 font-mono text-xs text-neutral-500">
+              <i data-lucide="layers" class="h-3.5 w-3.5 text-blue-500"></i>
+              <span>4 PILLARS • 16 SPECIALIZED TRACKS</span>
+            </div>
+            <h2 data-i18n="dir_heading" class="mt-2 text-2xl font-bold tracking-tight text-black dark:text-white sm:text-3xl">
+              Categories &amp; Specialized Tracks
+            </h2>
+            <p data-i18n="dir_subheading" class="mt-1.5 max-w-2xl text-sm text-neutral-600 dark:text-neutral-400">
+              Explore all 4 core pillars and 16 specialized playbooks. Filter by category, search keywords, or inspect step-by-step workflows.
+            </p>
+          </div>
+
+          <!-- Directory Search & Sort Controls -->
+          <div class="flex flex-wrap items-center gap-2.5">
+            <div class="relative flex-1 sm:w-64 sm:flex-initial">
+              <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-400"></i>
+              <input
+                type="text"
+                id="dir-search-input"
+                oninput="handleDirSearch(this.value)"
+                placeholder="Filter 16 tracks..."
+                class="w-full rounded-lg border border-neutral-200 bg-white py-2 pl-9 pr-3 text-xs text-black placeholder-neutral-400 focus:border-black focus:outline-none dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-white dark:placeholder-neutral-500 dark:focus:border-white"
+              />
+            </div>
+            <select
+              id="dir-sort-select"
+              onchange="handleDirSort(this.value)"
+              class="rounded-lg border border-neutral-200 bg-white px-3 py-2 text-xs font-medium text-neutral-700 focus:border-black focus:outline-none dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-300 dark:focus:border-white"
+            >
+              <option value="default">Sort: Pillar Order</option>
+              <option value="asc">Sort: A → Z</option>
+              <option value="desc">Sort: Z → A</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <button type="button" onclick="setDirFilter('All')" data-dir-tab="All" class="dir-tab-btn rounded-full border border-neutral-200 bg-white px-4 py-1.5 text-xs font-medium text-neutral-600 hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-400 dark:hover:border-neutral-600 transition">
+            All Tracks (16)
+          </button>
+          <button type="button" onclick="setDirFilter('Digital Marketing')" data-dir-tab="Digital Marketing" class="dir-tab-btn rounded-full border border-white bg-white px-4 py-1.5 text-xs font-semibold text-black dark:border-white dark:bg-white dark:text-black transition">
+            Digital Marketing (4)
+          </button>
+          <button type="button" onclick="setDirFilter('Graphic Design')" data-dir-tab="Graphic Design" class="dir-tab-btn rounded-full border border-neutral-200 bg-white px-4 py-1.5 text-xs font-medium text-neutral-600 hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-400 dark:hover:border-neutral-600 transition">
+            Graphic Design (4)
+          </button>
+          <button type="button" onclick="setDirFilter('Video Editing')" data-dir-tab="Video Editing" class="dir-tab-btn rounded-full border border-neutral-200 bg-white px-4 py-1.5 text-xs font-medium text-neutral-600 hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-400 dark:hover:border-neutral-600 transition">
+            Video Editing (4)
+          </button>
+          <button type="button" onclick="setDirFilter('Tech & AI Tools')" data-dir-tab="Tech & AI Tools" class="dir-tab-btn rounded-full border border-neutral-200 bg-white px-4 py-1.5 text-xs font-medium text-neutral-600 hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-400 dark:hover:border-neutral-600 transition">
+            Tech &amp; AI Tools (4)
+          </button>
+        </div>
+
+        <!-- 16 Structured Track Cards Grid (Rendered Dynamically) -->
+        <div id="directory-cards-grid" class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. CREATIVE ASSETS & RESOURCES SHOWCASE SECTION ==================== -->
+    <section id="assets" class="border-b border-neutral-200 bg-neutral-50/50 py-16 sm:py-24 dark:border-neutral-800 dark:bg-[#050505]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <div class="inline-flex items-center gap-1.5 font-mono text-xs text-neutral-500">
+              <i data-lucide="package" class="h-3.5 w-3.5 text-blue-500"></i>
+              <span>CREATIVE ASSETS &amp; RESOURCES</span>
+            </div>
+            <h2 data-i18n="assets_heading" class="mt-2 text-2xl font-bold tracking-tight text-black dark:text-white sm:text-3xl">
+              Production-Ready Templates, LUTs &amp; Prompt Kits
+            </h2>
+            <p data-i18n="assets_subheading" class="mt-1.5 max-w-2xl text-sm text-neutral-600 dark:text-neutral-400">
+              Downloadable design systems, color grading LUTs, structured LLM prompt libraries, and launch checklists built for speed.
+            </p>
+          </div>
+          <a
+            href="https://t.me/+ft6iEkOYPGQ1MWZl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex shrink-0 items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-xs font-semibold text-black transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-white dark:hover:border-neutral-600"
+          >
+            <span>Get All Packs on Telegram</span>
+            <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+          </a>
+        </div>
+
+        <!-- 4 Core Asset Collections Grid -->
+        <div id="creative-assets-grid" class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED INSIGHTS / BLOG SECTION ==================== -->
+    <section id="insights" class="border-b border-neutral-200 py-16 sm:py-20 dark:border-neutral-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <span class="font-mono text-xs text-neutral-500">INSIGHTS &amp; TUTORIALS</span>
+            <h2 class="mt-1 text-2xl font-bold tracking-tight text-black dark:text-white">Latest Playbooks &amp; Video Breakdowns</h2>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <a href="https://www.youtube.com/@VeeonoDigital" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 font-medium text-neutral-700 hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-300 dark:hover:border-neutral-600">
+              <i data-lucide="youtube" class="h-3.5 w-3.5 text-red-500"></i>
+              <span>YouTube @VeeonoDigital</span>
+            </a>
+            <a href="https://www.tiktok.com/@veeonomarketing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 font-medium text-neutral-700 hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-300 dark:hover:border-neutral-600">
+              <span>TikTok @veeonomarketing</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <article class="flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-6 transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:hover:border-neutral-600">
+            <div>
+              <span class="rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 font-mono text-[10px] font-medium text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">DIGITAL MARKETING</span>
+              <h3 class="mt-3 text-base font-semibold text-black dark:text-white">High-ROAS Meta &amp; TikTok Creative Testing Matrix</h3>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">How to systematically test 3-second visual hooks, UGC angles, and attribution windows without wasting ad spend</p>
+            </div>
+            <button type="button" onclick="openTrackModal('Meta & TikTok Ads')" class="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-black dark:text-white hover:underline">
+              <span>Inspect Track</span>
+              <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+            </button>
+          </article>
+
+          <article class="flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-6 transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:hover:border-neutral-600">
+            <div>
+              <span class="rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 font-mono text-[10px] font-medium text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">VIDEO EDITING</span>
+              <h3 class="mt-3 text-base font-semibold text-black dark:text-white">Film-Emulation Color Grading &amp; Layered Sound Design</h3>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">Combine Log-to-Rec.709 LUT pipelines with subtle foley risers to boost retention across Reels and YouTube</p>
+            </div>
+            <button type="button" onclick="openTrackModal('Color Grading')" class="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-black dark:text-white hover:underline">
+              <span>Inspect Track</span>
+              <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+            </button>
+          </article>
+
+          <article class="flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-6 transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:hover:border-neutral-600">
+            <div>
+              <span class="rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 font-mono text-[10px] font-medium text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">TECH &amp; AI TOOLS</span>
+              <h3 class="mt-3 text-base font-semibold text-black dark:text-white">Chaining AI Prompts for End-to-End Campaign Production</h3>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">Use structured system prompts to generate ad scripts, Midjourney storyboards, and landing page code in minutes</p>
+            </div>
+            <button type="button" onclick="openTrackModal('Prompts')" class="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-black dark:text-white hover:underline">
+              <span>Inspect Track</span>
+              <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. VERCEL-STYLE DIRECT CONTACT & COMMUNITY BANNER ==================== -->
+    <section id="contact" class="border-b border-neutral-200 py-16 sm:py-20 dark:border-neutral-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="relative rounded-xl border border-neutral-200 bg-white p-8 sm:p-12 dark:border-neutral-800 dark:bg-[#0A0A0A]">
+          <span class="pointer-events-none absolute -left-2 -top-2 font-mono text-sm text-neutral-400 dark:text-neutral-600 select-none">+</span>
+          <span class="pointer-events-none absolute -right-2 -top-2 font-mono text-sm text-neutral-400 dark:text-neutral-600 select-none">+</span>
+
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <span class="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 font-mono text-xs text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
+                DIRECT CHANNELS &amp; SUPPORT
+              </span>
+              <h2 data-i18n="contact_heading" class="text-2xl font-bold tracking-tight text-black dark:text-white sm:text-4xl">
+                Ready to deploy with Veeono Marketing?
+              </h2>
+              <p data-i18n="contact_subtitle" class="max-w-xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                Reach out directly by phone, join our Telegram group for daily AI &amp; marketing drops, or follow our video tutorials across social platforms
+              </p>
+
+              <!-- Direct Phone & Website Pill Links -->
+              <div class="flex flex-wrap gap-3 pt-1">
+                <a
+                  href="tel:+855965378504"
+                  class="inline-flex items-center gap-2.5 rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-xs font-semibold text-black transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-black dark:text-white dark:hover:border-neutral-600"
+                >
+                  <i data-lucide="phone" class="h-3.5 w-3.5 text-blue-500"></i>
+                  <span>+855 96 537 8504</span>
+                </a>
+                <a
+                  href="https://www.veeono.site"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2.5 rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-xs font-semibold text-black transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-black dark:text-white dark:hover:border-neutral-600"
+                >
+                  <i data-lucide="globe" class="h-3.5 w-3.5 text-emerald-500"></i>
+                  <span>www.veeono.site</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Social & Direct Action Grid -->
+            <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <a
+                href="https://t.me/+ft6iEkOYPGQ1MWZl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-xs font-semibold text-black transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-black dark:text-white dark:hover:border-neutral-600"
+              >
+                <span class="flex items-center gap-2.5">
+                  <svg class="h-4 w-4 fill-current text-sky-500" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                  Telegram
+                </span>
+                <i data-lucide="arrow-up-right" class="h-4 w-4 text-neutral-400"></i>
+              </a>
+
+              <a
+                href="https://web.facebook.com/veeono.marketing/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-xs font-semibold text-black transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-black dark:text-white dark:hover:border-neutral-600"
+              >
+                <span class="flex items-center gap-2.5">
+                  <svg class="h-4 w-4 fill-current text-blue-500" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                  Facebook
+                </span>
+                <i data-lucide="arrow-up-right" class="h-4 w-4 text-neutral-400"></i>
+              </a>
+
+              <a
+                href="https://www.youtube.com/@VeeonoDigital"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-xs font-semibold text-black transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-black dark:text-white dark:hover:border-neutral-600"
+              >
+                <span class="flex items-center gap-2.5">
+                  <svg class="h-4 w-4 fill-current text-red-500" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  YouTube
+                </span>
+                <i data-lucide="arrow-up-right" class="h-4 w-4 text-neutral-400"></i>
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@veeonomarketing"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-xs font-semibold text-black transition hover:border-neutral-400 dark:border-neutral-800 dark:bg-black dark:text-white dark:hover:border-neutral-600"
+              >
+                <span class="flex items-center gap-2.5">
+                  <svg class="h-4 w-4 fill-current text-black dark:text-white" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                  TikTok
+                </span>
+                <i data-lucide="arrow-up-right" class="h-4 w-4 text-neutral-400"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== STRUCTURED MULTI-COLUMN FOOTER ==================== -->
+  <footer class="bg-white text-neutral-600 dark:bg-black dark:text-neutral-400">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6">
+        <!-- Full Veeono Brand Column (2 Cols) -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="#top" class="inline-block" aria-label="Veeono Marketing Home">
+            <svg class="h-9 sm:h-10 w-auto veeono-logo-svg text-black dark:text-white" viewBox="0 0 620 140" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="veeono">
+              <path d="M16 70C54 65 76 16 122 16C163 16 190 41 197 69H186C179 45 155 27 124 27C102 27 91 41 97 55C101 63 109 68 119 70H16Z" fill="currentColor"/>
+              <path d="M236 74C198 79 176 128 130 128C89 128 62 103 55 75H66C73 99 97 117 128 117C150 117 161 103 155 89C151 81 143 76 133 74H236Z" fill="currentColor"/>
+              <text x="256" y="103" fill="currentColor" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="88" font-weight="400" letter-spacing="-2">veeono</text>
+            </svg>
+          </a>
+          <p class="max-w-xs text-xs leading-relaxed text-neutral-500">
+            Veeono Marketing — The unified platform for Digital Marketing, Graphic Design, Video Editing, and Tech &amp; AI Tools
+          </p>
+          <div class="space-y-1.5 text-xs">
+            <div>
+              <a href="https://www.veeono.site" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-medium text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">
+                <i data-lucide="globe" class="h-3.5 w-3.5 text-blue-500"></i>
+                <span>https://www.veeono.site</span>
+              </a>
+            </div>
+            <div>
+              <a href="tel:+855965378504" class="inline-flex items-center gap-2 font-medium text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white">
+                <i data-lucide="phone" class="h-3.5 w-3.5 text-emerald-500"></i>
+                <span>+855 96 537 8504</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 1: Digital Marketing -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-black dark:text-white">Digital Marketing</h4>
+          <ul class="mt-4 space-y-2.5 text-xs">
+            <li><button type="button" onclick="jumpToDirectory('Digital Marketing', 'SEO')" class="hover:text-black dark:hover:text-white">SEO</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Digital Marketing', 'Meta & TikTok Ads')" class="hover:text-black dark:hover:text-white">Meta &amp; TikTok Ads</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Digital Marketing', 'Content Strategy')" class="hover:text-black dark:hover:text-white">Content Strategy</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Digital Marketing', 'Analytics')" class="hover:text-black dark:hover:text-white">Analytics</button></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Graphic Design -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-black dark:text-white">Graphic Design</h4>
+          <ul class="mt-4 space-y-2.5 text-xs">
+            <li><button type="button" onclick="jumpToDirectory('Graphic Design', 'Branding & Logo')" class="hover:text-black dark:hover:text-white">Branding &amp; Logo</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Graphic Design', 'Typography')" class="hover:text-black dark:hover:text-white">Typography</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Graphic Design', 'UI/UX')" class="hover:text-black dark:hover:text-white">UI/UX</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Graphic Design', 'Print & Poster')" class="hover:text-black dark:hover:text-white">Print &amp; Poster</button></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Video Editing -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-black dark:text-white">Video Editing</h4>
+          <ul class="mt-4 space-y-2.5 text-xs">
+            <li><button type="button" onclick="jumpToDirectory('Video Editing', 'Color Grading')" class="hover:text-black dark:hover:text-white">Color Grading</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Video Editing', 'Sound Design')" class="hover:text-black dark:hover:text-white">Sound Design</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Video Editing', 'Motion Graphics')" class="hover:text-black dark:hover:text-white">Motion Graphics</button></li>
+            <li><button type="button" onclick="jumpToDirectory('Video Editing', 'Storytelling')" class="hover:text-black dark:hover:text-white">Storytelling</button></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Tech & AI + Resources -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-black dark:text-white">Tech, AI &amp; Assets</h4>
+          <ul class="mt-4 space-y-2.5 text-xs">
+            <li><button type="button" onclick="jumpToDirectory('Tech & AI Tools', 'AI Image/Video')" class="hover:text-black dark:hover:text-white">AI Image/Video</button></li>
+            <li><button type="button" onclick="jumpToAssets('AI Prompt Library')" class="hover:text-black dark:hover:text-white">AI Prompt Library</button></li>
+            <li><button type="button" onclick="jumpToAssets('Templates & Mockups')" class="hover:text-black dark:hover:text-white">Templates &amp; Mockups</button></li>
+            <li><button type="button" onclick="jumpToAssets('LUTs & Presets')" class="hover:text-black dark:hover:text-white">LUTs &amp; Presets</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright & Social Bar -->
+      <div class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-neutral-200 pt-8 sm:flex-row dark:border-neutral-800">
+        <div class="flex flex-wrap items-center gap-3 text-xs text-neutral-500">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-[11px] text-neutral-700 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-300">
+            <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+            All systems normal
+          </span>
+          <span>© 2026 Veeono Marketing (www.veeono.site) — All rights reserved</span>
+        </div>
+
+        <!-- All 4 Official Social Links -->
+        <div class="flex items-center gap-2">
+          <a href="https://web.facebook.com/veeono.marketing/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-600 transition hover:border-neutral-400 hover:text-black dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400 dark:hover:text-white">
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+          </a>
+          <a href="https://t.me/+ft6iEkOYPGQ1MWZl" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-600 transition hover:border-neutral-400 hover:text-black dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400 dark:hover:text-white">
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@VeeonoDigital" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-600 transition hover:border-neutral-400 hover:text-black dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400 dark:hover:text-white">
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@veeonomarketing" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-600 transition hover:border-neutral-400 hover:text-black dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400 dark:hover:text-white">
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== ⌘K COMMAND PALETTE MODAL ==================== -->
+  <div id="command-modal" class="fixed inset-0 z-50 hidden items-start justify-center bg-black/75 px-4 pt-20 backdrop-blur-sm">
+    <div class="w-full max-w-xl overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-2xl dark:border-neutral-800 dark:bg-[#0A0A0A]">
+      <div class="flex items-center border-b border-neutral-200 px-4 dark:border-neutral-800">
+        <i data-lucide="search" class="h-4 w-4 text-neutral-400"></i>
+        <input
+          type="text"
+          id="command-search-input"
+          placeholder="Search 16 tracks or creative assets (e.g., SEO, LUTs, Prompts, UI/UX)..."
+          class="w-full bg-transparent px-3 py-3.5 text-sm text-black placeholder-neutral-400 focus:outline-none dark:text-white dark:placeholder-neutral-500"
+        />
+        <button type="button" onclick="closeCommandModal()" class="rounded border border-neutral-200 px-2 py-0.5 font-mono text-[10px] text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">ESC</button>
+      </div>
+      <div id="command-results" class="max-h-80 overflow-y-auto p-2 space-y-1">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TRACK / RESOURCE PLAYBOOK DETAIL MODAL ==================== -->
+  <div id="track-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 px-4 backdrop-blur-sm">
+    <div class="w-full max-w-xl rounded-xl border border-neutral-200 bg-white p-6 shadow-2xl dark:border-neutral-800 dark:bg-[#0A0A0A]">
+      <div class="flex items-start justify-between gap-4 border-b border-neutral-200 pb-4 dark:border-neutral-800">
+        <div>
+          <div class="flex items-center gap-2">
+            <span id="modal-track-category" class="rounded border border-neutral-200 bg-neutral-100 px-2 py-0.5 font-mono text-[11px] font-medium text-neutral-800 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200">Digital Marketing</span>
+            <span id="modal-track-kh" class="text-xs font-medium text-neutral-500"></span>
+          </div>
+          <h3 id="modal-track-title" class="mt-2 text-lg font-bold text-black dark:text-white">SEO Architecture Playbook</h3>
+          <p id="modal-track-route" class="font-mono text-[11px] text-neutral-500">/topics/digital-marketing/seo</p>
+        </div>
+        <button type="button" onclick="closeTrackModal()" class="rounded-lg border border-neutral-200 p-1.5 text-neutral-500 hover:text-black dark:border-neutral-800 dark:text-neutral-400 dark:hover:text-white">
+          <i data-lucide="x" class="h-4 w-4"></i>
+        </button>
+      </div>
+
+      <div class="mt-4 space-y-4">
+        <p id="modal-track-desc" class="text-xs sm:text-sm leading-relaxed text-neutral-600 dark:text-neutral-300"></p>
+
+        <!-- Step-by-Step Workflow -->
+        <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3.5 dark:border-neutral-800 dark:bg-black">
+          <p class="font-mono text-[10px] uppercase tracking-wider text-blue-500 mb-2">Step-by-Step Execution Workflow</p>
+          <ol id="modal-track-steps" class="space-y-1.5 text-xs text-neutral-700 dark:text-neutral-300"></ol>
+        </div>
+
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-neutral-500 mb-2">Tools, Formats &amp; Deliverables</p>
+          <div id="modal-track-tags" class="flex flex-wrap gap-1.5"></div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-2.5 border-t border-neutral-200 pt-4 dark:border-neutral-800">
+        <a
+          href="https://t.me/+ft6iEkOYPGQ1MWZl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-semibold text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+        >
+          <span>Download / Access via Telegram</span>
+          <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+        </a>
+        <button
+          type="button"
+          onclick="closeTrackModal(); openInquiryModal();"
+          class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2.5 text-xs font-semibold text-neutral-800 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200"
+        >
+          <i data-lucide="message-square" class="h-3.5 w-3.5"></i>
+          <span>Request Consultation</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== GET STARTED INQUIRY MODAL ==================== -->
+  <div id="inquiry-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 px-4 backdrop-blur-sm">
+    <div class="w-full max-w-md rounded-xl border border-neutral-200 bg-white p-6 shadow-2xl dark:border-neutral-800 dark:bg-[#0A0A0A]">
+      <div class="flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-neutral-800">
+        <div>
+          <h3 class="text-base font-bold text-black dark:text-white">Get Started with Veeono</h3>
+          <p class="text-xs text-neutral-500">Connect with our team or request custom assets</p>
+        </div>
+        <button type="button" onclick="closeInquiryModal()" class="rounded-lg border border-neutral-200 p-1.5 text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
+          <i data-lucide="x" class="h-4 w-4"></i>
+        </button>
+      </div>
+      <form onsubmit="handleInquirySubmit(event)" class="mt-4 space-y-3.5">
+        <div>
+          <label class="block text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1">Name / Brand</label>
+          <input type="text" required placeholder="e.g., Sokha / Creative Studio" class="w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2 text-xs text-black focus:border-black focus:outline-none dark:border-neutral-800 dark:bg-black dark:text-white dark:focus:border-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1">Focus Pillar</label>
+          <select class="w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2 text-xs text-black focus:border-black focus:outline-none dark:border-neutral-800 dark:bg-black dark:text-white dark:focus:border-white">
+            <option>Digital Marketing (SEO, Meta &amp; TikTok Ads)</option>
+            <option>Graphic Design (Branding, Typography, UI/UX)</option>
+            <option>Video Editing (Color Grading, Motion, Storytelling)</option>
+            <option>Tech &amp; AI Tools (AI Image/Video, Web, Prompts)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-1">Phone / Telegram</label>
+          <input type="text" required placeholder="+855 ..." class="w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2 text-xs text-black focus:border-black focus:outline-none dark:border-neutral-800 dark:bg-black dark:text-white dark:focus:border-white" />
+        </div>
+        <button type="submit" class="w-full rounded-full bg-black py-2.5 text-xs font-semibold text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200">
+          Submit &amp; Join Telegram
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast-box" class="fixed bottom-5 right-5 z-50 hidden items-center gap-2.5 rounded-lg border border-neutral-200 bg-white px-4 py-3 text-xs font-medium text-black shadow-xl dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-white">
+    <i data-lucide="check-circle-2" class="h-4 w-4 text-emerald-500"></i>
+    <span id="toast-message">Updated</span>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    function refreshIcons() {
+      try {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      } catch (err) {
+        console.warn('Icon initialization skipped:', err);
+      }
+    }
+
+    // 16 Specialized Tracks (4 Core Pillars x 4 Sub-categories)
+    const TRACKS = [
+      // Digital Marketing
+      {
+        id: 'SEO',
+        category: 'Digital Marketing',
+        icon: 'search',
+        title: 'Search Engine Optimization',
+        khTitle: 'ការបង្កើនចំណាត់ថ្នាក់លើ Google',
+        route: '/topics/digital-marketing/seo',
+        desc: 'Technical site architecture, Khmer/English keyword clustering, programmatic landing pages, and authority backlink systems',
+        tags: ['Technical SEO', 'Schema', 'Keyword Map'],
+        steps: [
+          '1. Run Core Web Vitals & crawlability audit on target pages',
+          '2. Cluster search intent keywords in English and Khmer',
+          '3. Deploy structured JSON-LD schema and internal pillar links'
+        ]
+      },
+      {
+        id: 'Meta & TikTok Ads',
+        category: 'Digital Marketing',
+        icon: 'megaphone',
+        title: 'Meta & TikTok Performance Ads',
+        khTitle: 'ការផ្សព្វផ្សាយ Meta & TikTok Ads',
+        route: '/topics/digital-marketing/meta-tiktok-ads',
+        desc: 'Full-funnel paid acquisition using 3-second scroll-stopping hooks, UGC creative testing matrices, and CAPI conversion tracking',
+        tags: ['ROAS Scaling', 'CAPI', 'Hook Testing'],
+        steps: [
+          '1. Configure Meta Pixel + Conversions API (CAPI) event deduplication',
+          '2. Launch 3x3 creative testing matrix (3 hooks × 3 visual angles)',
+          '3. Scale winning ad sets with automated ROAS guardrails'
+        ]
+      },
+      {
+        id: 'Content Strategy',
+        category: 'Digital Marketing',
+        icon: 'file-text',
+        title: 'Omnichannel Content Strategy',
+        khTitle: 'យុទ្ធសាស្ត្របង្កើតមាតិកា',
+        route: '/topics/digital-marketing/content-strategy',
+        desc: 'Repeatable content pillars turning long-form YouTube guides into high-converting TikTok, Reels, and Telegram micro-posts',
+        tags: ['Content Pillar', 'Funnel Copy', 'Distribution'],
+        steps: [
+          '1. Define 4 core audience pain points and authority pillars',
+          '2. Script 1 flagship video and atomize into 6 short-form clips',
+          '3. Distribute via Telegram, Facebook, TikTok, and YouTube Shorts'
+        ]
+      },
+      {
+        id: 'Analytics',
+        category: 'Digital Marketing',
+        icon: 'bar-chart-3',
+        title: 'Growth Analytics & Attribution',
+        khTitle: 'ការវិភាគទិន្នន័យទីផ្សារ',
+        route: '/topics/digital-marketing/analytics',
+        desc: 'GA4 event architecture, UTM governance, Looker Studio executive dashboards, and cohort retention diagnostics',
+        tags: ['GA4', 'Looker Studio', 'UTM Matrix'],
+        steps: [
+          '1. Standardize UTM naming conventions across all social & paid links',
+          '2. Track micro-conversions (scroll depth, CTA clicks, Telegram joins)',
+          '3. Connect GA4 + ad spend into a live Looker Studio dashboard'
+        ]
+      },
+
+      // Graphic Design
+      {
+        id: 'Branding & Logo',
+        category: 'Graphic Design',
+        icon: 'compass',
+        title: 'Brand Identity & Logo Systems',
+        khTitle: 'ការរចនាឡូហ្គោ និងអត្តសញ្ញាណប្រ៊ែន',
+        route: '/topics/graphic-design/branding-logo',
+        desc: 'Geometric mark construction, monochrome/color token systems, clear-space rules, and scalable brand guidelines',
+        tags: ['Vector Grid', 'Brand Book', 'SVG'],
+        steps: [
+          '1. Construct primary emblem on a balanced optical geometry grid',
+          '2. Define dark/light surface contrast tokens and safe zones',
+          '3. Export master vector SVG, EPS, and favicon packages'
+        ]
+      },
+      {
+        id: 'Typography',
+        category: 'Graphic Design',
+        icon: 'type',
+        title: 'Bilingual Typography & Hierarchy',
+        khTitle: 'សិល្បៈអក្សរ និងការរៀបចំទំហំអក្សរ',
+        route: '/topics/graphic-design/typography',
+        desc: 'Pairing modern geometric Latin fonts with legible Khmer typefaces, modular type scales, and editorial kerning',
+        tags: ['Khmer + Latin', 'Type Scale', 'Kerning'],
+        steps: [
+          '1. Pair Inter/Poppins with Kantumruy Pro for balanced x-height',
+          '2. Set 1.65–1.75 line-height to protect Khmer subscripts and vowels',
+          '3. Establish H1–Caption modular scale tokens in Figma'
+        ]
+      },
+      {
+        id: 'UI/UX',
+        category: 'Graphic Design',
+        icon: 'layout',
+        title: 'Interface & Design Systems (UI/UX)',
+        khTitle: 'ការរចនាគេហទំព័រ និងកម្មវិធី UI/UX',
+        route: '/topics/graphic-design/ui-ux',
+        desc: 'Component-driven Figma architectures, accessible dark/light themes, interactive prototypes, and conversion-focused layouts',
+        tags: ['Figma Tokens', 'Prototyping', 'Dark UI'],
+        steps: [
+          '1. Wireframe user journeys and responsive breakpoints first',
+          '2. Build reusable Auto-Layout components with semantic variables',
+          '3. Validate tap targets (min 44px) and contrast ratios'
+        ]
+      },
+      {
+        id: 'Print & Poster',
+        category: 'Graphic Design',
+        icon: 'image',
+        title: 'Campaign Posters & Key Visuals',
+        khTitle: 'ការរចនា Poster និងផ្ទាំងផ្សព្វផ្សាយ',
+        route: '/topics/graphic-design/print-poster',
+        desc: 'High-impact social key visuals, event banners, packaging dielines, and CMYK/RGB print-ready production workflows',
+        tags: ['Key Visuals', 'CMYK / 300DPI', 'Mockups'],
+        steps: [
+          '1. Establish focal point hierarchy (Headline → Hero Visual → CTA)',
+          '2. Apply lighting, depth, and grain textures for tactile polish',
+          '3. Export 300 DPI CMYK PDFs with bleed alongside social crops'
+        ]
+      },
+
+      // Video Editing
+      {
+        id: 'Color Grading',
+        category: 'Video Editing',
+        icon: 'aperture',
+        title: 'Cinema Color Grading & LUTs',
+        khTitle: 'ការកែពណ៌វីដេអូកម្រិតភាពយន្ត',
+        route: '/topics/video-editing/color-grading',
+        desc: 'Log-to-Rec.709 color management, skin-tone vectorscope isolation, custom .CUBE LUT creation, and halation nodes',
+        tags: ['DaVinci Resolve', '.CUBE LUTs', 'Log Pipeline'],
+        steps: [
+          '1. Normalize camera Log footage to DaVinci Wide Gamut / Rec.709',
+          '2. Balance exposure, white balance, and isolate skin tones',
+          '3. Apply film-emulation contrast curve and export reusable .CUBE LUT'
+        ]
+      },
+      {
+        id: 'Sound Design',
+        category: 'Video Editing',
+        icon: 'volume-2',
+        title: 'Tactile Sound Design & Mixing',
+        khTitle: 'ការរៀបចំសំឡេង និង Sound Effects',
+        route: '/topics/video-editing/sound-design',
+        desc: 'Layered foley risers, whooshes, dialogue EQ compression, and -14 LUFS loudness mastering for social & YouTube',
+        tags: ['Foley SFX', '-14 LUFS', 'Vocal Clarity'],
+        steps: [
+          '1. Clean dialogue with parametric EQ and gentle 3:1 compression',
+          '2. Layer subtle room tone, foley hits, and transition risers',
+          '3. Master stereo bus to -14 LUFS with -1.0 dBTP true peak'
+        ]
+      },
+      {
+        id: 'Motion Graphics',
+        category: 'Video Editing',
+        icon: 'layers',
+        title: 'Motion Graphics & Kinetic UI',
+        khTitle: 'ចលនាក្រាហ្វិក និងអក្សរមានចលនា',
+        route: '/topics/video-editing/motion-graphics',
+        desc: 'Smooth speed-graph easing, kinetic typography captions, UI screen callouts, and modular After Effects templates',
+        tags: ['After Effects', 'Speed Graph', 'Kinetic Type'],
+        steps: [
+          '1. Design vector graphic layers in Illustrator/Figma',
+          '2. Animate with custom cubic-bezier speed graph curves',
+          '3. Export transparent ProRes 4444 or .MOGRT presets'
+        ]
+      },
+      {
+        id: 'Storytelling',
+        category: 'Video Editing',
+        icon: 'film',
+        title: 'Retention Pacing & Storytelling',
+        khTitle: 'សិល្បៈកាត់ត និងការនិទានរឿង',
+        route: '/topics/video-editing/storytelling',
+        desc: 'Pattern interrupts every 3–5 seconds, J/L-cut dialogue flow, narrative tension arcs, and high-retention short-form pacing',
+        tags: ['Pacing', 'J/L Cuts', 'Retention'],
+        steps: [
+          '1. Open with an immediate visual & auditory hook in frame 1',
+          '2. Use J-cuts and L-cuts to keep dialogue momentum seamless',
+          '3. Review retention graph drop-offs and tighten dead air'
+        ]
+      },
+
+      // Tech & AI Tools
+      {
+        id: 'AI Image/Video',
+        category: 'Tech & AI Tools',
+        icon: 'sparkles',
+        title: 'Generative AI Image & Video',
+        khTitle: 'ការបង្កើតរូបភាព និងវីដេអូដោយ AI',
+        route: '/topics/tech-ai-tools/ai-image-video',
+        desc: 'Consistent character/product workflows using Midjourney, Flux, Kling, Runway, and high-detail upscaling pipelines',
+        tags: ['Midjourney', 'Flux / Runway', 'Upscaling'],
+        steps: [
+          '1. Lock camera lens, lighting, and style reference seeds',
+          '2. Generate base keyframes and animate motion paths',
+          '3. Upscale final renders to 4K for commercial clarity'
+        ]
+      },
+      {
+        id: 'Productivity',
+        category: 'Tech & AI Tools',
+        icon: 'cpu',
+        title: 'AI Automation & Productivity',
+        khTitle: 'ប្រព័ន្ធស្វ័យប្រវត្តិកម្ម និងផលិតភាព',
+        route: '/topics/tech-ai-tools/productivity',
+        desc: 'No-code webhooks connecting Notion, Telegram bots, Google Sheets, and LLM agents to eliminate repetitive tasks',
+        tags: ['Make / n8n', 'Telegram Bots', 'Notion OS'],
+        steps: [
+          '1. Map repetitive manual tasks across content and lead intake',
+          '2. Connect webhook triggers with LLM classification nodes',
+          '3. Send instant summaries and alerts to Telegram'
+        ]
+      },
+      {
+        id: 'Coding & Web',
+        category: 'Tech & AI Tools',
+        icon: 'code-2',
+        title: 'AI-Assisted Web & App Building',
+        khTitle: 'ការបង្កើតគេហទំព័រដោយជំនួយពី AI',
+        route: '/topics/tech-ai-tools/coding-web',
+        desc: 'Rapid full-stack prototyping with Next.js, Tailwind CSS, Vercel deployment, and AI pair-programming workflows',
+        tags: ['Next.js', 'Tailwind CSS', 'Vercel'],
+        steps: [
+          '1. Architect responsive UI tokens and component hierarchy',
+          '2. Build interactive front-end and API routes with AI assistance',
+          '3. Deploy with instant edge caching and custom domain SSL'
+        ]
+      },
+      {
+        id: 'Prompts',
+        category: 'Tech & AI Tools',
+        icon: 'terminal',
+        title: 'Structured Prompt Engineering',
+        khTitle: 'បច្ចេកទេសសរសេរ Prompts កម្រិតខ្ពស់',
+        route: '/topics/tech-ai-tools/prompts',
+        desc: 'Reusable role-context-constraint prompt frameworks, JSON schema outputs, and multi-step reasoning chains',
+        tags: ['System Prompts', 'JSON Output', 'Chain-of-Thought'],
+        steps: [
+          '1. Define explicit Role, Audience Context, and Output Schema',
+          '2. Provide 2–3 high-signal few-shot examples',
+          '3. Save versioned prompts inside your team library'
+        ]
+      }
+    ];
+
+    // 4 Creative Asset Collections
+    const CREATIVE_ASSETS = [
+      {
+        id: 'Templates & Mockups',
+        category: 'Creative Assets',
+        icon: 'layout-template',
+        formatBadge: '.FIG • .PSD',
+        count: '35+ Files',
+        title: 'Templates & Mockups',
+        route: '/resources/templates-mockups',
+        desc: 'Social ad carousels, dark/light web UI kits, device mockups, and Khmer-ready brand presentation decks',
+        tags: ['Figma Auto-Layout', 'PSD Mockups', 'Ad Kits'],
+        steps: [
+          '1. Duplicate the master Figma or PSD template file',
+          '2. Swap brand colors, typography tokens, and product shots',
+          '3. Export 1x/2x assets ready for web or ad manager upload'
+        ]
+      },
+      {
+        id: 'LUTs & Presets',
+        category: 'Creative Assets',
+        icon: 'sliders',
+        formatBadge: '.CUBE • .WAV',
+        count: '28+ Packs',
+        title: 'LUTs & Presets',
+        route: '/resources/luts-presets',
+        desc: 'Cinematic Log-to-Rec.709 color grading .CUBE LUTs, transition presets, and crisp foley sound effect packs',
+        tags: ['DaVinci / Premiere', '33-Point .CUBE', 'SFX Pack'],
+        steps: [
+          '1. Import .CUBE LUTs into your NLE LUT folder',
+          '2. Apply on an adjustment layer above balanced footage',
+          '3. Dial intensity between 45%–75% for natural skin tones'
+        ]
+      },
+      {
+        id: 'AI Prompt Library',
+        category: 'Creative Assets',
+        icon: 'terminal',
+        formatBadge: '.MD • .JSON',
+        count: '50+ Prompts',
+        title: 'AI Prompt Library',
+        route: '/resources/ai-prompt-library',
+        desc: 'Copy-paste system prompts for ad copywriting, SEO outlines, Midjourney product photography, and UI coding',
+        tags: ['ChatGPT / Claude', 'Midjourney v6', 'JSON Prompts'],
+        steps: [
+          '1. Copy the structured prompt template from the library',
+          '2. Fill in the bracketed [BRAND] and [OFFER] variables',
+          '3. Run and refine output with built-in critique steps'
+        ]
+      },
+      {
+        id: 'Checklists',
+        category: 'Creative Assets',
+        icon: 'check-square',
+        formatBadge: '.PDF • NOTION',
+        count: '16 SOPs',
+        title: 'Checklists',
+        route: '/resources/checklists',
+        desc: 'Pre-flight SOP checklists for Meta/TikTok ad launches, technical SEO audits, brand handoffs, and video mastering',
+        tags: ['Ad Launch SOP', 'SEO Audit', 'Render QA'],
+        steps: [
+          '1. Clone the checklist into your Notion workspace or print PDF',
+          '2. Verify every tracking, pixel, and creative QA item',
+          '3. Sign off before publishing campaigns live'
+        ]
+      }
+    ];
+
+    const ALL_CATALOG = [...TRACKS, ...CREATIVE_ASSETS];
+
+    // Directory Filtering, Sorting & Rendering
+    let currentDirFilter = 'Digital Marketing';
+    let currentDirSearch = '';
+    let currentDirSort = 'default';
+
+    function renderDirectoryCards(highlightId = null) {
+      const grid = document.getElementById('directory-cards-grid');
+      if (!grid) return;
+
+      let filtered = TRACKS.filter(t => {
+        const matchCat = currentDirFilter === 'All' || t.category === currentDirFilter;
+        const q = currentDirSearch.toLowerCase().trim();
+        const matchQuery = !q ||
+          t.id.toLowerCase().includes(q) ||
+          t.title.toLowerCase().includes(q) ||
+          t.khTitle.toLowerCase().includes(q) ||
+          t.category.toLowerCase().includes(q) ||
+          t.tags.some(tag => tag.toLowerCase().includes(q));
+        return matchCat && matchQuery;
+      });
+
+      if (currentDirSort === 'asc') {
+        filtered = [...filtered].sort((a, b) => a.id.localeCompare(b.id));
+      } else if (currentDirSort === 'desc') {
+        filtered = [...filtered].sort((a, b) => b.id.localeCompare(a.id));
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full rounded-xl border border-dashed border-neutral-300 bg-neutral-50 p-10 text-center dark:border-neutral-800 dark:bg-[#0A0A0A]">
+            <p class="text-sm font-semibold text-black dark:text-white">No tracks match "${currentDirSearch}"</p>
+            <p class="mt-1 text-xs text-neutral-500">Try clearing the filter or searching another keyword.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(t => {
+        const isHighlighted = highlightId && t.id === highlightId;
+        return `
+          <div
+            data-track-card="${t.id}"
+            onclick="openTrackModal('${t.id.replace(/'/g, "\\'")}')"
+            class="group cursor-pointer flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-5 transition duration-200 hover:border-neutral-500 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:hover:border-neutral-600 ${isHighlighted ? 'track-card-highlighted' : ''}"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-black dark:border-neutral-800 dark:bg-neutral-900 dark:text-white">
+                  <i data-lucide="${t.icon}" class="h-4 w-4"></i>
+                </div>
+                <span class="rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 font-mono text-[10px] font-medium text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+                  ${t.category}
+                </span>
+              </div>
+
+              <h3 class="mt-4 text-base font-bold text-black dark:text-white">
+                ${t.id}
+              </h3>
+              <p class="mt-0.5 text-xs font-medium text-neutral-500 kh-text">
+                ${t.khTitle}
+              </p>
+              <p class="mt-2.5 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400 line-clamp-3">
+                ${t.desc}
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-900">
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                ${t.tags.map(tag => `<span class="rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 font-mono text-[10px] text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">${tag}</span>`).join('')}
+              </div>
+              <div class="flex items-center justify-between text-xs font-semibold text-black dark:text-white">
+                <span>Open Playbook</span>
+                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-black dark:group-hover:text-white"></i>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      refreshIcons();
+    }
+
+    function setDirFilter(category) {
+      currentDirFilter = category;
+      document.querySelectorAll('.dir-tab-btn').forEach(btn => {
+        if (btn.dataset.dirTab === category) {
+          btn.className = 'dir-tab-btn rounded-full border border-black bg-black px-4 py-1.5 text-xs font-semibold text-white dark:border-white dark:bg-white dark:text-black transition';
+        } else {
+          btn.className = 'dir-tab-btn rounded-full border border-neutral-200 bg-white px-4 py-1.5 text-xs font-medium text-neutral-600 hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:text-neutral-400 dark:hover:border-neutral-600 transition';
+        }
+      });
+      renderDirectoryCards();
+    }
+
+    function handleDirSearch(val) {
+      currentDirSearch = val;
+      renderDirectoryCards();
+    }
+
+    function handleDirSort(val) {
+      currentDirSort = val;
+      renderDirectoryCards();
+    }
+
+    function jumpToDirectory(category, trackId) {
+      closeAllMenus();
+      setDirFilter(category);
+      renderDirectoryCards(trackId);
+      const section = document.getElementById('directory');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (trackId) {
+        setTimeout(() => openTrackModal(trackId), 350);
+      }
+    }
+
+    function renderCreativeAssets(highlightAssetId = null) {
+      const grid = document.getElementById('creative-assets-grid');
+      if (!grid) return;
+
+      grid.innerHTML = CREATIVE_ASSETS.map(asset => {
+        const isHighlighted = highlightAssetId && asset.id === highlightAssetId;
+        return `
+          <div
+            data-asset-card="${asset.id}"
+            onclick="openTrackModal('${asset.id.replace(/'/g, "\\'")}')"
+            class="group cursor-pointer flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-5 transition duration-200 hover:-translate-y-0.5 hover:border-neutral-400 dark:border-neutral-800 dark:bg-[#0A0A0A] dark:hover:border-neutral-600 ${isHighlighted ? 'track-card-highlighted' : ''}"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-black dark:border-neutral-800 dark:bg-neutral-900 dark:text-white">
+                  <i data-lucide="${asset.icon}" class="h-4 w-4"></i>
+                </div>
+                <span class="rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 font-mono text-[10px] font-semibold text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+                  ${asset.formatBadge}
+                </span>
+              </div>
+
+              <div class="mt-4 flex items-center justify-between">
+                <h3 class="text-base font-bold text-black group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400 transition-colors">
+                  ${asset.title}
+                </h3>
+                <span class="font-mono text-[11px] font-semibold text-neutral-500">${asset.count}</span>
+              </div>
+
+              <p class="mt-2 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">
+                ${asset.desc}
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-900">
+              <div class="flex flex-wrap gap-1.5 mb-3">
+                ${asset.tags.map(tag => `<span class="rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 font-mono text-[10px] text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">${tag}</span>`).join('')}
+              </div>
+              <div class="flex items-center justify-between text-xs font-semibold text-black dark:text-white">
+                <span>Inspect &amp; Download</span>
+                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-black dark:group-hover:text-white"></i>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      refreshIcons();
+    }
+
+    function jumpToAssets(assetId) {
+      closeAllMenus();
+      renderCreativeAssets(assetId);
+      const section = document.getElementById('assets');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => openTrackModal(assetId), 350);
+    }
+
+    // 2. Vercel.com Architectural Pillar Preview & CLI Copy
+    const VERCEL_PREVIEW_DATA = {
+      'Digital Marketing': {
+        route: 'veeono.site/topics/digital-marketing',
+        summary: '4 growth playbooks • SEO, Paid Ads, Content & GA4',
+        logs: [
+          '<span class="text-blue-500">✓</span> Loaded SEO Architecture &amp; Khmer/EN Keyword Clustering',
+          '<span class="text-blue-500">✓</span> Configured Meta &amp; TikTok 3x3 Creative Hook Matrix',
+          '<span class="text-blue-500">✓</span> Connected CAPI + GA4 Looker Studio Attribution',
+          '<span class="text-emerald-500">▲</span> Status: Ready to deploy across all ad channels'
+        ]
+      },
+      'Graphic Design': {
+        route: 'veeono.site/topics/graphic-design',
+        summary: '4 visual systems • Branding, Typography, UI/UX & Print',
+        logs: [
+          '<span class="text-blue-500">✓</span> Optical SVG Logo Grid &amp; Monochrome Contrast Tokens',
+          '<span class="text-blue-500">✓</span> Paired Inter/Poppins with Kantumruy Pro Type Scale',
+          '<span class="text-blue-500">✓</span> Built Auto-Layout Figma UI/UX Component Library',
+          '<span class="text-emerald-500">▲</span> Status: Master vector &amp; print assets verified'
+        ]
+      },
+      'Video Editing': {
+        route: 'veeono.site/topics/video-editing',
+        summary: '4 post-production workflows • Color, Sound, Motion & Story',
+        logs: [
+          '<span class="text-blue-500">✓</span> Normalized Log Footage with 33-Point .CUBE LUTs',
+          '<span class="text-blue-500">✓</span> Mastered Dialogue &amp; Foley Sound Design at -14 LUFS',
+          '<span class="text-blue-500">✓</span> Rendered Kinetic Motion Graphics &amp; Retention Cuts',
+          '<span class="text-emerald-500">▲</span> Status: 4K 60fps master export pipeline active'
+        ]
+      },
+      'Tech & AI Tools': {
+        route: 'veeono.site/topics/tech-ai-tools',
+        summary: '4 AI & web pipelines • Image/Video, Automation, Web & Prompts',
+        logs: [
+          '<span class="text-blue-500">✓</span> Initialized Midjourney, Flux &amp; Runway Upscale Seeds',
+          '<span class="text-blue-500">✓</span> Deployed Webhook Automation &amp; Telegram Bot Alerts',
+          '<span class="text-blue-500">✓</span> Loaded 50+ Structured JSON &amp; System Prompt Kits',
+          '<span class="text-emerald-500">▲</span> Status: Edge-cached AI workflows online'
+        ]
+      }
+    };
+
+    let activeVercelPillar = 'Digital Marketing';
+
+    function setVercelPreviewPillar(pillar) {
+      activeVercelPillar = pillar;
+      const data = VERCEL_PREVIEW_DATA[pillar];
+      if (!data) return;
+
+      document.querySelectorAll('.vercel-pillar-tab').forEach(btn => {
+        const isActive = btn.dataset.vercelTab === pillar;
+        if (isActive) {
+          btn.classList.add('bg-neutral-100/80', 'dark:bg-neutral-900/90', 'font-semibold', 'text-black', 'dark:text-white');
+          btn.classList.remove('font-medium', 'text-neutral-500', 'dark:text-neutral-400');
+        } else {
+          btn.classList.remove('bg-neutral-100/80', 'dark:bg-neutral-900/90', 'font-semibold', 'text-black', 'dark:text-white');
+          btn.classList.add('font-medium', 'text-neutral-500', 'dark:text-neutral-400');
+        }
+      });
+
+      const routeEl = document.getElementById('vercel-term-route');
+      const logsEl = document.getElementById('vercel-term-logs');
+      const summaryEl = document.getElementById('vercel-preview-summary');
+      const subtracksEl = document.getElementById('vercel-preview-subtracks');
+
+      if (routeEl) routeEl.textContent = data.route;
+      if (logsEl) logsEl.innerHTML = data.logs.map(line => `<p>${line}</p>`).join('');
+      if (summaryEl) summaryEl.textContent = data.summary;
+
+      if (subtracksEl) {
+        const subTracks = TRACKS.filter(t => t.category === pillar);
+        subtracksEl.innerHTML = subTracks.map(t => `
+          <button
+            type="button"
+            onclick="jumpToDirectory('${pillar.replace(/'/g, "\\'")}', '${t.id.replace(/'/g, "\\'")}')"
+            class="flex items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2 text-left text-xs font-medium text-neutral-800 transition hover:border-black dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-200 dark:hover:border-white"
+          >
+            <span class="truncate">${t.id}</span>
+            <i data-lucide="arrow-up-right" class="h-3 w-3 shrink-0 text-neutral-400"></i>
+          </button>
+        `).join('');
+      }
+
+      refreshIcons();
+    }
+
+    function copyCommandText() {
+      const el = document.getElementById('cli-command-text');
+      if (!el) return;
+      const text = el.textContent;
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      showToast(`Copied: ${text}`);
+    }
+
+    // 3. Track / Asset Playbook Detail Modal
+    function openTrackModal(itemId) {
+      const trackModal = document.getElementById('track-modal');
+      const item = ALL_CATALOG.find(c => c.id === itemId);
+      if (!item || !trackModal) return;
+      document.getElementById('modal-track-category').textContent = item.category;
+      document.getElementById('modal-track-kh').textContent = item.khTitle || item.count || '';
+      document.getElementById('modal-track-title').textContent = item.title;
+      document.getElementById('modal-track-route').textContent = item.route;
+      document.getElementById('modal-track-desc').textContent = item.desc;
+      document.getElementById('modal-track-steps').innerHTML = (item.steps || [])
+        .map(s => `<li class="leading-relaxed">${s}</li>`)
+        .join('');
+      document.getElementById('modal-track-tags').innerHTML = item.tags
+        .map(t => `<span class="rounded border border-neutral-200 bg-neutral-50 px-2.5 py-1 font-mono text-[11px] text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">${t}</span>`)
+        .join('');
+
+      trackModal.classList.remove('hidden');
+      trackModal.classList.add('flex');
+      refreshIcons();
+    }
+
+    function closeTrackModal() {
+      const trackModal = document.getElementById('track-modal');
+      if (!trackModal) return;
+      trackModal.classList.add('hidden');
+      trackModal.classList.remove('flex');
+    }
+
+    // 4. Desktop Dropdown & Mega Menu Hover/Click Logic
+    function setupDropdown(wrapperId, btnId, menuId, chevronId) {
+      const wrapper = document.getElementById(wrapperId);
+      const btn = document.getElementById(btnId);
+      const menu = document.getElementById(menuId);
+      const chevron = document.getElementById(chevronId);
+      if (!wrapper || !btn || !menu || !chevron) return;
+
+      let timeout;
+
+      const open = () => {
+        clearTimeout(timeout);
+        closeAllMenus(menuId);
+        menu.classList.remove('invisible', 'opacity-0', 'translate-y-1', 'pointer-events-none');
+        menu.classList.add('visible', 'opacity-100', 'translate-y-0', 'pointer-events-auto');
+        chevron.classList.add('rotate-180');
+        btn.setAttribute('aria-expanded', 'true');
+      };
+
+      const close = () => {
+        timeout = setTimeout(() => {
+          menu.classList.add('invisible', 'opacity-0', 'translate-y-1', 'pointer-events-none');
+          menu.classList.remove('visible', 'opacity-100', 'translate-y-0', 'pointer-events-auto');
+          chevron.classList.remove('rotate-180');
+          btn.setAttribute('aria-expanded', 'false');
+        }, 140);
+      };
+
+      wrapper.addEventListener('mouseenter', open);
+      wrapper.addEventListener('mouseleave', close);
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.contains('invisible') ? open() : close();
+      });
+    }
+
+    function closeAllMenus(exceptId = null) {
+      [
+        { menu: 'topics-mega-menu', chevron: 'topics-chevron', btn: 'topics-menu-btn' },
+        { menu: 'resources-dropdown', chevron: 'resources-chevron', btn: 'resources-menu-btn' }
+      ].forEach(d => {
+        if (d.menu !== exceptId) {
+          const m = document.getElementById(d.menu);
+          const c = document.getElementById(d.chevron);
+          const b = document.getElementById(d.btn);
+          if (m) m.classList.add('invisible', 'opacity-0', 'translate-y-1', 'pointer-events-none');
+          if (m) m.classList.remove('visible', 'opacity-100', 'translate-y-0', 'pointer-events-auto');
+          if (c) c.classList.remove('rotate-180');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Mobile Drawer & Accordion
+    function toggleMobileDrawer() {
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer) drawer.classList.toggle('hidden');
+    }
+    function toggleAccordion(bodyId, chevId) {
+      const body = document.getElementById(bodyId);
+      const chev = document.getElementById(chevId);
+      if (body) body.classList.toggle('hidden');
+      if (chev) chev.classList.toggle('rotate-180');
+    }
+
+    // 5. Command Palette Search Modal (⌘K)
+    function renderCommandResults(q = '') {
+      const commandResults = document.getElementById('command-results');
+      if (!commandResults) return;
+
+      const term = q.toLowerCase().trim();
+      const matches = ALL_CATALOG.filter(item =>
+        item.id.toLowerCase().includes(term) ||
+        item.title.toLowerCase().includes(term) ||
+        (item.khTitle && item.khTitle.toLowerCase().includes(term)) ||
+        item.category.toLowerCase().includes(term)
+      );
+
+      if (matches.length === 0) {
+        commandResults.innerHTML = `<div class="py-8 text-center text-xs text-neutral-500">No results found for "${q}"</div>`;
+        return;
+      }
+
+      commandResults.innerHTML = matches.map(item => {
+        const isAsset = CREATIVE_ASSETS.some(a => a.id === item.id);
+        const actionCall = isAsset
+          ? `closeCommandModal(); jumpToAssets('${item.id.replace(/'/g, "\\'")}');`
+          : `closeCommandModal(); jumpToDirectory('${item.category.replace(/'/g, "\\'")}', '${item.id.replace(/'/g, "\\'")}');`;
+        return `
+          <button
+            type="button"
+            onclick="${actionCall}"
+            class="flex w-full items-center justify-between rounded-lg px-3.5 py-2.5 text-left transition hover:bg-neutral-100 dark:hover:bg-neutral-900"
+          >
+            <div>
+              <p class="text-xs font-semibold text-black dark:text-white">${item.id} — ${item.title}</p>
+              <p class="text-[11px] text-neutral-500">${item.category}</p>
+            </div>
+            <span class="rounded border border-neutral-200 px-2 py-0.5 font-mono text-[10px] text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">Open</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function openCommandModal() {
+      const commandModal = document.getElementById('command-modal');
+      const commandInput = document.getElementById('command-search-input');
+      if (!commandModal || !commandInput) return;
+      commandModal.classList.remove('hidden');
+      commandModal.classList.add('flex');
+      commandInput.value = '';
+      renderCommandResults('');
+      setTimeout(() => commandInput.focus(), 40);
+    }
+
+    function closeCommandModal() {
+      const commandModal = document.getElementById('command-modal');
+      if (!commandModal) return;
+      commandModal.classList.add('hidden');
+      commandModal.classList.remove('flex');
+    }
+
+    // 6. Dark / Light Mode Toggle
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
+      const isDark = htmlEl.classList.toggle('dark');
+      showToast(isDark ? 'Dark mode enabled' : 'Light mode enabled');
+    }
+
+    // 7. Bilingual Toggle (EN / ខ្មែរ)
+    let currentLang = 'en';
+    const I18N = {
+      en: {
+        nav_home: 'Home',
+        nav_topics: 'Topics',
+        nav_resources: 'Assets',
+        nav_blog: 'Blog',
+        nav_contact: 'Contact',
+        search_bar_label: 'Search...',
+        cta_get_started: 'Start',
+        hero_badge: 'Veeono Platform — Ship Campaigns, Brand Systems & AI Workflows',
+        hero_title: 'Your complete platform for Marketing, Design, Video & AI',
+        hero_subtitle: 'Veeono provides the playbooks, templates, LUTs, and AI prompt infrastructure to build, scale, and deploy high-converting digital brands',
+        hero_cta_primary: 'Start Exploring Tracks',
+        hero_cta_secondary: 'Join Telegram Community',
+        stat_1: 'Core Pillars',
+        stat_2: 'Specialized Tracks',
+        stat_3: 'Free Templates & Prompts',
+        stat_4: 'Community Support',
+        dir_heading: 'Categories & Specialized Tracks',
+        dir_subheading: 'Explore all 4 core pillars and 16 specialized playbooks. Filter by category, search keywords, or inspect step-by-step workflows',
+        assets_heading: 'Production-Ready Templates, LUTs & Prompt Kits',
+        assets_subheading: 'Downloadable design systems, color grading LUTs, structured LLM prompt libraries, and launch checklists built for speed',
+        contact_heading: 'Ready to deploy with Veeono Marketing?',
+        contact_subtitle: 'Reach out directly by phone, join our Telegram group for daily AI & marketing drops, or follow our video tutorials across social platforms'
+      },
+      kh: {
+        nav_home: 'ដើម',
+        nav_topics: 'ប្រធានបទ',
+        nav_resources: 'ធនធាន',
+        nav_blog: 'ប្លុក',
+        nav_contact: 'ទាក់ទង',
+        search_bar_label: 'ស្វែងរក...',
+        cta_get_started: 'ចាប់ផ្ដើម',
+        hero_badge: 'មជ្ឈមណ្ឌលរួមសម្រាប់អ្នកបង្កើតមាតិកា និងទីផ្សារឌីជីថល',
+        hero_title: 'វេទិកាតែមួយសម្រាប់ Marketing, Design, Video និង AI',
+        hero_subtitle: 'ភ្ជាប់គោលដៅទីផ្សារ និងការរចនារបស់អ្នកទៅកាន់មគ្គុទ្ទេសក៍ Templates, LUTs និង AI Prompts ដែលរៀបចំដោយ Veeono Marketing',
+        hero_cta_primary: 'ស្វែងយល់ពីប្រធានបទ',
+        hero_cta_secondary: 'ចូលរួម Telegram',
+        stat_1: 'វិស័យស្នូលទាំង ៤',
+        stat_2: 'ជំនាញឯកទេស',
+        stat_3: 'Templates & Prompts ឥតគិតថ្លៃ',
+        stat_4: 'ការគាំទ្រពីសហគមន៍',
+        dir_heading: 'បញ្ជីប្រភេទមាតិកា និងជំនាញឯកទេសទាំង ១៦',
+        dir_subheading: 'ស្វែងរក និងចម្រោះតាមវិស័យទាំង ៤ និងជំនាញទាំង ១៦ ព្រមទាំងមើលជំហានអនុវត្តជាក់ស្ដែង',
+        assets_heading: 'ធនធាន Creative Assets, Templates និង Prompt Kits',
+        assets_subheading: 'ទាញយក Design Templates, LUTs កែពណ៌វីដេអូ, AI Prompt Library និង Checklists សម្រាប់ការងារប្រចាំថ្ងៃ',
+        contact_heading: 'ទំនាក់ទំនងជាមួយ Veeono Marketing',
+        contact_subtitle: 'ទាក់ទងផ្ទាល់តាមទូរស័ព្ទ ចូលរួមក្រុម Telegram ឬតាមដានមេរៀនវីដេអូលើ Facebook, YouTube និង TikTok'
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'kh' : 'en';
+      const dict = I18N[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+          currentLang === 'kh' ? el.classList.add('kh-text') : el.classList.remove('kh-text');
+        }
+      });
+      const langLabel = document.getElementById('lang-label');
+      if (langLabel) langLabel.textContent = currentLang === 'en' ? 'EN / ខ្មែរ' : 'ខ្មែរ / EN';
+      showToast(currentLang === 'kh' ? 'បានប្ដូរទៅភាសាខ្មែរ' : 'Switched to English');
+    }
+
+    // 8. Inquiry Modal & Toast
+    function openInquiryModal() {
+      const inquiryModal = document.getElementById('inquiry-modal');
+      if (!inquiryModal) return;
+      inquiryModal.classList.remove('hidden');
+      inquiryModal.classList.add('flex');
+    }
+    function closeInquiryModal() {
+      const inquiryModal = document.getElementById('inquiry-modal');
+      if (!inquiryModal) return;
+      inquiryModal.classList.add('hidden');
+      inquiryModal.classList.remove('flex');
+    }
+
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      closeInquiryModal();
+      showToast('Submitted! Opening Veeono Telegram community...');
+      setTimeout(() => window.open('https://t.me/+ft6iEkOYPGQ1MWZl', '_blank', 'noopener,noreferrer'), 800);
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const box = document.getElementById('toast-box');
+      const msgEl = document.getElementById('toast-message');
+      if (!box || !msgEl) return;
+      msgEl.textContent = msg;
+      box.classList.remove('hidden');
+      box.classList.add('flex');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.add('hidden');
+        box.classList.remove('flex');
+      }, 3000);
+    }
+
+    // Safe Initialization on DOM Ready
+    function initVeeonoApp() {
+      try {
+        setupDropdown('topics-menu-wrapper', 'topics-menu-btn', 'topics-mega-menu', 'topics-chevron');
+        setupDropdown('resources-menu-wrapper', 'resources-menu-btn', 'resources-dropdown', 'resources-chevron');
+
+        document.addEventListener('click', () => closeAllMenus());
+
+        const commandModal = document.getElementById('command-modal');
+        const commandInput = document.getElementById('command-search-input');
+        const trackModal = document.getElementById('track-modal');
+        const inquiryModal = document.getElementById('inquiry-modal');
+
+        if (commandInput) {
+          commandInput.addEventListener('input', (e) => renderCommandResults(e.target.value));
+        }
+        if (commandModal) {
+          commandModal.addEventListener('click', (e) => { if (e.target === commandModal) closeCommandModal(); });
+        }
+        if (trackModal) {
+          trackModal.addEventListener('click', (e) => { if (e.target === trackModal) closeTrackModal(); });
+        }
+        if (inquiryModal) {
+          inquiryModal.addEventListener('click', (e) => { if (e.target === inquiryModal) closeInquiryModal(); });
+        }
+
+        document.addEventListener('keydown', (e) => {
+          if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            if (commandModal && commandModal.classList.contains('hidden')) {
+              openCommandModal();
+            } else {
+              closeCommandModal();
+            }
+          } else if (e.key === 'Escape') {
+            closeCommandModal();
+            closeTrackModal();
+            closeInquiryModal();
+            closeAllMenus();
+          }
+        });
+
+        setVercelPreviewPillar('Digital Marketing');
+        renderDirectoryCards();
+        renderCreativeAssets();
+        refreshIcons();
+      } catch (error) {
+        console.error('Veeono initialization error:', error);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initVeeonoApp);
+    } else {
+      initVeeonoApp();
+    }
+  </script>
+</body>
+</html>
